@@ -398,11 +398,11 @@ public class MenuController {
     @FXML
     void initialize() {
         SzkoleniaController szkoCon = new SzkoleniaController();
-        fxColAkronim.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("akronim"));
-        fxColDataOd.setCellValueFactory(new PropertyValueFactory<Szkolenie, Date>("data_od"));
-        fxColDataDo.setCellValueFactory(new PropertyValueFactory<Szkolenie, Date>("data_do"));
-        fxColTypSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("typ_szkolen"));
-        fxColNazwaSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, Integer>("Kursy_id"));
+        fxColAkronim.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("sAkronim"));
+        fxColDataOd.setCellValueFactory(new PropertyValueFactory<Szkolenie, Date>("sDataOd"));
+        fxColDataDo.setCellValueFactory(new PropertyValueFactory<Szkolenie, Date>("sDataDo"));
+        fxColTypSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("sTryb"));
+        fxColNazwaSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, Integer>("sIDkursy"));
         fxTabViewSzkolenia.setItems(szkoCon.pokazSzkolenia());
 
     }
