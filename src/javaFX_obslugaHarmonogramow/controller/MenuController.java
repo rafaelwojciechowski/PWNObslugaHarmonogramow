@@ -1,10 +1,12 @@
 package javaFX_obslugaHarmonogramow.controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
 import javaFX_obslugaHarmonogramow.model.Kurs;
+import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -55,19 +57,19 @@ public class MenuController {
     private TableView<?> fxTabViewSzkolenia;
 
     @FXML
-    private TableColumn<?, ?> fxColAkronim;
+    private TableColumn<Szkolenie, String> fxColAkronim;
 
     @FXML
-    private TableColumn<?, ?> fxColDataOd;
+    private TableColumn<Szkolenie, Date> fxColDataOd;
 
     @FXML
-    private TableColumn<?, ?> fxColDataDo;
+    private TableColumn<Szkolenie, Date> fxColDataDo;
 
     @FXML
-    private TableColumn<?, ?> fxColTypSzkolenia;
+    private TableColumn<Szkolenie, Date> fxColTypSzkolenia;
 
     @FXML
-    private TableColumn<?, ?> fxColNazwaSzkolenia;
+    private TableColumn<Szkolenie, Date> fxColNazwaSzkolenia;
 
     @FXML
     private ComboBox<?> fxComDzienSzkolenia;
