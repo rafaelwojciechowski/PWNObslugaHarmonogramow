@@ -2,11 +2,10 @@ package javaFX_obslugaHarmonogramow.model;
 
 public class Trener {
 
-    private int tID;
     private String tImie, tNazwisko, tInicjaly, tHaslo;
-    private boolean tMentor;
+    private int tID, tMentor;
 
-    public Trener(int tID, String tImie, String tNazwisko, String tInicjaly, String tHaslo, boolean tMentor) {
+    public Trener(int tID, String tImie, String tNazwisko, String tInicjaly, String tHaslo, int tMentor) {
         this.tID = tID;
         this.tImie = tImie;
         this.tNazwisko = tNazwisko;
@@ -55,11 +54,11 @@ public class Trener {
         this.tHaslo = tHaslo;
     }
 
-    public boolean istMentor() {
+    public int istMentor() {
         return tMentor;
     }
 
-    public void settMentor(boolean tMentor) {
+    public void settMentor(int tMentor) {
         this.tMentor = tMentor;
     }
 
