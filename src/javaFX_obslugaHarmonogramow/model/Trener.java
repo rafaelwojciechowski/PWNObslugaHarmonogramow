@@ -2,8 +2,8 @@ package javaFX_obslugaHarmonogramow.model;
 
 public class Trener {
 
-    private int tID, tMentor;
     private String tImie, tNazwisko, tInicjaly, tHaslo;
+    private int tID, tMentor;
 
     public Trener(int tID, String tImie, String tNazwisko, String tInicjaly, String tHaslo, int tMentor) {
         this.tID = tID;
