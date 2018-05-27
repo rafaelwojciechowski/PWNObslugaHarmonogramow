@@ -1,7 +1,12 @@
 package javaFX_obslugaHarmonogramow.controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
+
+import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
+import javaFX_obslugaHarmonogramow.model.Kurs;
+import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -52,19 +57,19 @@ public class MenuController {
     private TableView<?> fxTabViewSzkolenia;
 
     @FXML
-    private TableColumn<?, ?> fxColAkronim;
+    private TableColumn<Szkolenie, String> fxColAkronim;
 
     @FXML
-    private TableColumn<?, ?> fxColDataOd;
+    private TableColumn<Szkolenie, Date> fxColDataOd;
 
     @FXML
-    private TableColumn<?, ?> fxColDataDo;
+    private TableColumn<Szkolenie, Date> fxColDataDo;
 
     @FXML
-    private TableColumn<?, ?> fxColTypSzkolenia;
+    private TableColumn<Szkolenie, String> fxColTypSzkolenia;
 
     @FXML
-    private TableColumn<?, ?> fxColNazwaSzkolenia;
+    private TableColumn<Szkolenie, Integer> fxColNazwaSzkolenia;
 
     @FXML
     private ComboBox<?> fxComDzienSzkolenia;
@@ -127,25 +132,31 @@ public class MenuController {
     private TableColumn<?, ?> fxKategoria;
 
     @FXML
-    private TableColumn<?, ?> fxNazwaKat;
+    private TextField fxTxtNazwaKat;
 
     @FXML
     private HBox fxKategorie;
 
     @FXML
-    private Button fxDodajKat;
+    private Button fxButDodajKat1;
 
     @FXML
-    private Button fxEdytujKat;
+    private Button fxButEdytujKat1;
 
     @FXML
-    private Button fxUsunKat;
+    private Button fxButUsunKat1;
 
     @FXML
-    private TableColumn<?, ?> fxNazwaKursu;
+    private TableView<KategoriaTematyczna> fxTabViewNazwaKat;
 
     @FXML
-    private TableColumn<?, ?> fxLiczbaDni;
+    private TableColumn<KategoriaTematyczna, String> fxColNazwaKat;
+
+    @FXML
+    private TextField fxTxtNazwaKursu;
+
+    @FXML
+    private TextField fxLTxticzbaDni;
 
     @FXML
     private Button fxDodajKurs;
@@ -157,10 +168,26 @@ public class MenuController {
     private Button fxUsunKurs;
 
     @FXML
-    private TableView<?> NazwaKursu;
+    private TableView<Kurs> NazwaKursu;
+
+    @FXML
+    private TableColumn<Kurs, String> fxNazwaKursu;
+
+    @FXML
+    private TableColumn<Kurs, Integer> fxLiczbaDni;
+
+    @FXML
+    void onButDodajKat2(ActionEvent event) {
+
+    }
 
     @FXML
     void onButDodajSzkolenie(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onButEdytujKat2(ActionEvent event) {
 
     }
 
@@ -171,6 +198,11 @@ public class MenuController {
 
     @FXML
     void onButSlownikDniSzkolen(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onButUsunKat2(ActionEvent event) {
 
     }
 
@@ -210,11 +242,6 @@ public class MenuController {
     }
 
     @FXML
-    void onDodajKat(ActionEvent event) {
-
-    }
-
-    @FXML
     void onDodajKurs(ActionEvent event) {
 
     }
@@ -226,11 +253,6 @@ public class MenuController {
 
     @FXML
     void onEdytujDzienSzkolenia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onEdytujKat(ActionEvent event) {
 
     }
 
@@ -255,21 +277,6 @@ public class MenuController {
     }
 
     @FXML
-    void onLiczbaDni(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onNazwaKat(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onNazwaKursu(ActionEvent event) {
-
-    }
-
-    @FXML
     void onNazwiskoUzytkownika(ActionEvent event) {
 
     }
@@ -285,11 +292,6 @@ public class MenuController {
     }
 
     @FXML
-    void onUsunKat(ActionEvent event) {
-
-    }
-
-    @FXML
     void onUsunKurs(ActionEvent event) {
 
     }
@@ -301,52 +303,6 @@ public class MenuController {
 
     @FXML
     void initialize() {
-        assert fxTxtAkronim != null : "fx:id=\"fxTxtAkronim\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxDatDataOd != null : "fx:id=\"fxDatDataOd\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxDatDataDo != null : "fx:id=\"fxDatDataDo\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxComTypSzkolenia != null : "fx:id=\"fxComTypSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxComRodzajKursu != null : "fx:id=\"fxComRodzajKursu\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxButDodajSzkolenie != null : "fx:id=\"fxButDodajSzkolenie\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxButEdytujSzkolenie != null : "fx:id=\"fxButEdytujSzkolenie\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxButUsunSzkolenie != null : "fx:id=\"fxButUsunSzkolenie\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxButSlownikDniSzkolen != null : "fx:id=\"fxButSlownikDniSzkolen\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxTabViewSzkolenia != null : "fx:id=\"fxTabViewSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxColAkronim != null : "fx:id=\"fxColAkronim\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxColDataOd != null : "fx:id=\"fxColDataOd\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxColDataDo != null : "fx:id=\"fxColDataDo\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxColTypSzkolenia != null : "fx:id=\"fxColTypSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxColNazwaSzkolenia != null : "fx:id=\"fxColNazwaSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxComDzienSzkolenia != null : "fx:id=\"fxComDzienSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxComInicjaly != null : "fx:id=\"fxComInicjaly\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxComAkronimSzkolenia != null : "fx:id=\"fxComAkronimSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxCheCzyDzienWolny != null : "fx:id=\"fxCheCzyDzienWolny\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxDodajDzienSzkolenia != null : "fx:id=\"fxDodajDzienSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxEdytujDzienSzkolenia != null : "fx:id=\"fxEdytujDzienSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxUsunDzienSzkolenia != null : "fx:id=\"fxUsunDzienSzkolenia\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxImieUzytkownika != null : "fx:id=\"fxImieUzytkownika\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxComMentorTrener != null : "fx:id=\"fxComMentorTrener\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxNazwiskoUzytkownika != null : "fx:id=\"fxNazwiskoUzytkownika\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxHaslo != null : "fx:id=\"fxHaslo\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxDodajUzytkownika != null : "fx:id=\"fxDodajUzytkownika\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxEdytujUzytkownika != null : "fx:id=\"fxEdytujUzytkownika\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxUsunUzytkownika != null : "fx:id=\"fxUsunUzytkownika\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxPrzypiszKat != null : "fx:id=\"fxPrzypiszKat\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxTableMentorTrener != null : "fx:id=\"fxTableMentorTrener\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxImie != null : "fx:id=\"fxImie\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxNazwisko != null : "fx:id=\"fxNazwisko\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxMentorTrener != null : "fx:id=\"fxMentorTrener\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxKategoria != null : "fx:id=\"fxKategoria\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxNazwaKat != null : "fx:id=\"fxNazwaKat\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxKategorie != null : "fx:id=\"fxKategorie\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxDodajKat != null : "fx:id=\"fxDodajKat\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxEdytujKat != null : "fx:id=\"fxEdytujKat\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxUsunKat != null : "fx:id=\"fxUsunKat\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxNazwaKursu != null : "fx:id=\"fxNazwaKursu\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxLiczbaDni != null : "fx:id=\"fxLiczbaDni\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxDodajKurs != null : "fx:id=\"fxDodajKurs\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxEdytujKurs != null : "fx:id=\"fxEdytujKurs\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert fxUsunKurs != null : "fx:id=\"fxUsunKurs\" was not injected: check your FXML file 'menu_glowne.fxml'.";
-        assert NazwaKursu != null : "fx:id=\"NazwaKursu\" was not injected: check your FXML file 'menu_glowne.fxml'.";
 
     }
 }
