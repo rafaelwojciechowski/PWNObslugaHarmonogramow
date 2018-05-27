@@ -1,35 +1,36 @@
 package javaFX_obslugaHarmonogramow.controller;
 
 import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
-import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
+import javaFX_obslugaHarmonogramow.model.Kurs;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class KategorieController {
+public class KursController {
 
-    public KategorieController() {
+    public KursController() {
     }
 
     DaoToMySQL dao = new DaoToMySQL();
 
-    public ArrayList<KategoriaTematyczna> pokazKategorie() {
-        ArrayList<KategoriaTematyczna> list = new ArrayList<>();
+    public ArrayList<Kurs> pokazKursy() {
+        ArrayList<Kurs> lista = new ArrayList<>();
         try {
             Statement st = dao.getCon().createStatement();
-            ResultSet rs = st.executeQuery("select * from Kat_tematyczne");
+            ResultSet rs = st.executeQuery("select * from Kursy");
             while(rs.next()){
-                list.add(new KategoriaTematyczna(rs.getInt("id"),rs.getString("nazwa")));
+                lista.add(new Kurs(rs.getInt("id"),rs.getString("nazwa"),rs.getInt("ile_dni")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return list;
-
+        return lista;
     }
 
 }
+
+
 
 

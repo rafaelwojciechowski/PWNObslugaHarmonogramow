@@ -27,7 +27,7 @@
          <center>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                  <Tab text="SZKOLENIA">
+                  <Tab onSelectionChanged="#wczytajSzkolenia" text="SZKOLENIA">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -97,7 +97,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                <Tab text="SŁOWNIK - DNI SZKOLEŃ">
+                <Tab onSelectionChanged="#wczytajDniSzkolen" text="SŁOWNIK - DNI SZKOLEŃ">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -160,7 +160,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="TRENERZY">
+                  <Tab onSelectionChanged="#wczytajTrenerzy" text="TRENERZY">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -275,7 +275,7 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="KURSY">
+                  <Tab onSelectionChanged="#wczytajKursy" text="KURSY">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

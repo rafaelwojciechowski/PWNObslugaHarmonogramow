@@ -5,12 +5,11 @@ import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 public class SzkoleniaController {
     private DaoToMySQL connection = new DaoToMySQL();
 
-    public void pokazSzkolenia(){
+    public ObservableList pokazSzkolenia(){
         ObservableList<Szkolenie> szkolenieView;
         Connection con = connection.getCon();
         ArrayList<Szkolenie> szkolenieLista = new ArrayList<>();
@@ -32,17 +31,8 @@ public class SzkoleniaController {
             e.printStackTrace();
         }
         szkolenieView = FXCollections.observableArrayList(szkolenieLista);
-
+        return szkolenieView;
     }
-    private void wyswietlSzkolenie(){
-        fxColAkronim.setCellValueFactory(new Property<Szkolenie, String>("akronim"));
-        fxColDataOd.setCellValueFactory(new Property<Szkolenie, String>("data_od"));
-        fxColDataDo.setCellValueFactory(new Property<Szkolenie, String>("data_do"));
-        fxColTypSzkolenia.setCellValueFactory(new Property<Szkolenie, String>("typ_szkolen"));
-        fxColNazwaSzkolenia.setCellValueFactory(new Property<Szkolenie, String>("Kursy_id"));
-        fxTabViewSzkolenia.setItems(szkolenieView);
-    }
-
 
 
 }
