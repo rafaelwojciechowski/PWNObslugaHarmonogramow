@@ -322,6 +322,31 @@ public class MenuController {
     }
 
     @FXML
+    void wczytajDniSzkolen(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajKat(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajKursy(ActionEvent event) {
+        KursController kurc = new KursController();
+    }
+
+    @FXML
+    void wczytajSzkolenia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajTrenerzy(ActionEvent event) {
+
+    }
+
+    @FXML
     void initialize() {
 
     }
