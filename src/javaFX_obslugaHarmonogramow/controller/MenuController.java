@@ -1,13 +1,19 @@
 package javaFX_obslugaHarmonogramow.controller;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
 import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
 import javaFX_obslugaHarmonogramow.model.Kurs;
 import javaFX_obslugaHarmonogramow.model.Szkolenie;
+import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -187,7 +193,20 @@ public class MenuController {
 
     @FXML
     void onButDodajSzkolenie(ActionEvent event) {
-
+        DaoToMySQL connection = new DaoToMySQL();
+        Connection con = connection.getCon();
+        try {
+            Statement st = con.createStatement();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO fkedupl_pwngr.Szkolenia (akronim, data_od, data_do, typ_szkolen, Kursy_id) VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1,fxTxtAkronim.getText());
+            ps.setDate(2, java.sql.Date.valueOf(fxDatDataOd.getValue()));
+            ps.setDate(3, java.sql.Date.valueOf(fxDatDataDo.getValue()));
+            ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()));
+            ps.setString(5, String.valueOf(fxComRodzajKursu.getValue()));
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -197,7 +216,22 @@ public class MenuController {
 
     @FXML
     void onButEdytujSzkolenie(ActionEvent event) {
-
+        DaoToMySQL connection = new DaoToMySQL();
+        Connection con = connection.getCon();
+        String selectedIndex = String.valueOf(fxTabViewSzkolenia.getSelectionModel().getSelectedItem());
+        try {
+            Statement st = con.createStatement();
+            PreparedStatement ps = con.prepareStatement("UPDATE fkedupl_pwngr.Szkolenia SET akronim=?, data_od=?, data_do=?, typ_szkolen=?, Kursy_id=? WHERE id=?");
+            ps.setString(1,fxTxtAkronim.getText());
+            ps.setDate(2, java.sql.Date.valueOf(fxDatDataOd.getValue()));
+            ps.setDate(3, java.sql.Date.valueOf(fxDatDataDo.getValue()));
+            ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()));
+            ps.setString(5, String.valueOf(fxComRodzajKursu.getValue()));
+            ps.setString(6, selectedIndex);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -212,7 +246,16 @@ public class MenuController {
 
     @FXML
     void onButUsunSzkolenie(ActionEvent event) {
-
+        DaoToMySQL connection = new DaoToMySQL();
+        Connection con = connection.getCon();
+        String selectedIndex = String.valueOf(fxTabViewSzkolenia.getSelectionModel().getSelectedItem());
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM fkedupl_pwngr.Szkolenia WHERE akronim=?");
+            ps.setString(1,selectedIndex);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -348,6 +391,13 @@ public class MenuController {
 
     @FXML
     void initialize() {
+        SzkoleniaController szkoCon = new SzkoleniaController();
+        fxColAkronim.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("akronim"));
+        fxColDataOd.setCellValueFactory(new PropertyValueFactory<Szkolenie, Date>("data_od"));
+        fxColDataDo.setCellValueFactory(new PropertyValueFactory<Szkolenie, Date>("data_do"));
+        fxColTypSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("typ_szkolen"));
+        fxColNazwaSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, Integer>("Kursy_id"));
+        fxTabViewSzkolenia.setItems(szkoCon.pokazSzkolenia());
 
     }
 }
