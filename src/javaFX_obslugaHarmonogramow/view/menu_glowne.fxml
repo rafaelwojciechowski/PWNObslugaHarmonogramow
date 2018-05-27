@@ -242,31 +242,31 @@
                                       </rowConstraints>
                                        <children>
                                           <Label text="Nazwa kategorii" />
-                                          <TextField fx:id="fxNazwaKat" onAction="#onNazwaKat" GridPane.columnIndex="1" />
+                                          <TextField fx:id="fxTxtNazwaKat" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                     <HBox fx:id="fxKategorie" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="fxDodajKat" mnemonicParsing="false" onAction="#onDodajKat" text="Dodaj kategorię">
+                                          <Button fx:id="fxButDodajKat1" mnemonicParsing="false" onAction="#onButDodajKat2" text="Dodaj kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="fxEdytujKat" mnemonicParsing="false" onAction="#onEdytujKat" text="Edytuj kategorię">
+                                          <Button fx:id="fxButEdytujKat1" mnemonicParsing="false" onAction="#onButEdytujKat2" text="Edytuj kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="fxUsunKat" mnemonicParsing="false" onAction="#onUsunKat" text="Usuń kategorię">
+                                          <Button fx:id="fxButUsunKat1" mnemonicParsing="false" onAction="#onButUsunKat2" text="Usuń kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <TableView fx:id="fxNazwaKat" prefHeight="200.0" prefWidth="200.0">
+                                    <TableView fx:id="fxTabViewNazwaKat" prefHeight="200.0" prefWidth="200.0">
                                       <columns>
-                                        <TableColumn fx:id="fxNazwaKat" prefWidth="330.0" text="Nazwa kategorii" />
+                                        <TableColumn fx:id="fxColNazwaKat" prefWidth="330.0" text="Nazwa kategorii" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -293,8 +293,8 @@
                                        <children>
                                           <Label text="Nazwa kursu" />
                                           <Label text="Liczba dni trwania kursu" GridPane.rowIndex="1" />
-                                          <TextField fx:id="fxNazwaKursu" onAction="#onNazwaKursu" GridPane.columnIndex="1" />
-                                          <TextField fx:id="fxLiczbaDni" onAction="#onLiczbaDni" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="fxTxtNazwaKursu" GridPane.columnIndex="1" />
+                                          <TextField fx:id="fxLTxticzbaDni" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
