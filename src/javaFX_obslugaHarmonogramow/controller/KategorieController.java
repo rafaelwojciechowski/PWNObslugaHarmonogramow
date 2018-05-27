@@ -2,17 +2,11 @@ package javaFX_obslugaHarmonogramow.controller;
 
 import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
 import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-
-
 
 public class KategorieController {
 
@@ -20,8 +14,6 @@ public class KategorieController {
     }
 
     DaoToMySQL dao = new DaoToMySQL();
-
-
 
     public ArrayList<KategoriaTematyczna> pokazKategorie() {
         ArrayList<KategoriaTematyczna> list = new ArrayList<>();
@@ -37,8 +29,6 @@ public class KategorieController {
         return list;
 
     }
-
-
 
 }
 
