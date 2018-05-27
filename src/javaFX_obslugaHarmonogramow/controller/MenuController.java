@@ -2,6 +2,9 @@ package javaFX_obslugaHarmonogramow.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
+import javaFX_obslugaHarmonogramow.model.Kurs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -142,10 +145,10 @@ public class MenuController {
     private Button fxButUsunKat1;
 
     @FXML
-    private TableView<?> fxTabViewNazwaKat;
+    private TableView<KategoriaTematyczna> fxTabViewNazwaKat;
 
     @FXML
-    private TableColumn<?, ?> fxColNazwaKat;
+    private TableColumn<KategoriaTematyczna, String> fxColNazwaKat;
 
     @FXML
     private TextField fxTxtNazwaKursu;
@@ -163,13 +166,13 @@ public class MenuController {
     private Button fxUsunKurs;
 
     @FXML
-    private TableView<?> NazwaKursu;
+    private TableView<Kurs> NazwaKursu;
 
     @FXML
-    private TableColumn<?, ?> fxNazwaKursu;
+    private TableColumn<Kurs, String> fxNazwaKursu;
 
     @FXML
-    private TableColumn<?, ?> fxLiczbaDni;
+    private TableColumn<Kurs, Integer> fxLiczbaDni;
 
     @FXML
     void onButDodajKat2(ActionEvent event) {
