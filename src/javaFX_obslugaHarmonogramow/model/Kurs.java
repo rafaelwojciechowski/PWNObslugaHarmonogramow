@@ -12,6 +12,11 @@ public class Kurs {
         this.kIleDni = kIleDni;
     }
 
+    public Kurs(String kNazwa, int kIleDni) {
+        this.kNazwa = kNazwa;
+        this.kIleDni = kIleDni;
+    }
+
     public int getkID() {
         return kID;
     }
