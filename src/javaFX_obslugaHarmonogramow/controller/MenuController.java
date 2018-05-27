@@ -1,12 +1,15 @@
 package javaFX_obslugaHarmonogramow.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
 import javaFX_obslugaHarmonogramow.model.Kurs;
 import javaFX_obslugaHarmonogramow.model.Szkolenie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
 public class MenuController {
@@ -297,7 +301,48 @@ public class MenuController {
     }
 
     @FXML
+    void wczytajKat() {
+        KategorieController kc = new KategorieController();
+        wyswietlWkolumnach(kc.pokazKategorie());
+
+    }
+
+    private ObservableList<KategoriaTematyczna> daneKategoria;
+
+    private void wyswietlWkolumnach(ArrayList <KategoriaTematyczna> kattem){
+        fxColNazwaKat.setCellValueFactory(new PropertyValueFactory<KategoriaTematyczna, String>("nazwa"));
+        daneKategoria = FXCollections.observableArrayList(kattem);
+        fxTabViewNazwaKat.setItems(daneKategoria);
+    }
+
+
+    @FXML
     void onUsunUzytkownika(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajDniSzkolen(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajKat(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajKursy(ActionEvent event) {
+        KursController kurc = new KursController();
+    }
+
+    @FXML
+    void wczytajSzkolenia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void wczytajTrenerzy(ActionEvent event) {
 
     }
 

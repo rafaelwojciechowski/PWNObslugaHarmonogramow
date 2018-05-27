@@ -2,28 +2,28 @@ package javaFX_obslugaHarmonogramow.model;
 
 public class KategoriaTematyczna {
 
-    private int ktID;
-    private String ktNazwa;
+    private int id;
+    private String nazwa;
 
-    public KategoriaTematyczna(int ktID, String ktNazwa) {
-        this.ktID = ktID;
-        this.ktNazwa = ktNazwa;
+    public KategoriaTematyczna(int id, String nazwa) {
+        this.id = id;
+        this.nazwa = nazwa;
     }
 
-    public int getKtID() {
-        return ktID;
+    public int getId() {
+        return id;
     }
 
-    public void setKtID(int ktID) {
-        this.ktID = ktID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getKtNazwa() {
-        return ktNazwa;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public void setKtNazwa(String ktNazwa) {
-        this.ktNazwa = ktNazwa;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
 }
