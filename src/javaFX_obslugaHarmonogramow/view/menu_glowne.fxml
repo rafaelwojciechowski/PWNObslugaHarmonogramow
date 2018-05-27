@@ -21,13 +21,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX_obslugaHarmonogramow.controller.MenuController">
    <children>
       <BorderPane layoutX="-2.0" layoutY="-1.0" prefHeight="550.0" prefWidth="770.0">
          <center>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                  <Tab text="SZKOLENIA (OK)">
+                  <Tab text="SZKOLENIA">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -148,8 +148,12 @@
                               </VBox>
                               <TableView layoutX="37.0" layoutY="214.0" prefHeight="200.0" prefWidth="698.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn prefWidth="75.0" text="Inicjały" />
+                                  <TableColumn prefWidth="75.0" text="Imię" />
+                                    <TableColumn prefWidth="75.0" text="Nazwisko" />
+                                    <TableColumn prefWidth="75.0" text="Akronim" />
+                                    <TableColumn prefWidth="142.0" text="Dzień szkolenia" />
+                                    <TableColumn prefWidth="142.0" text="Wolne?" />
                                 </columns>
                               </TableView>
                            </children>
@@ -248,7 +252,7 @@
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="fxEdytujKat" mnemonicParsing="false" onAction="#onEdytujKat" text="Edytu kategorię">
+                                          <Button fx:id="fxEdytujKat" mnemonicParsing="false" onAction="#onEdytujKat" text="Edytuj kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
