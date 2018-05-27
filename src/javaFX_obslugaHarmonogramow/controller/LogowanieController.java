@@ -2,6 +2,7 @@ package javaFX_obslugaHarmonogramow.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -23,6 +24,11 @@ public class LogowanieController {
 
     @FXML
     private Button fxButZaloguj;
+
+    @FXML
+    void onButZaloguj(ActionEvent event) {
+
+    }
 
     @FXML
     void initialize() {
