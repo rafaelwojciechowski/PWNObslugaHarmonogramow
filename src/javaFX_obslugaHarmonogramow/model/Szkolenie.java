@@ -10,16 +10,14 @@ public class Szkolenie {
     private Date sDataOd, sDataDo;
     private String sTryb;
     private int sIDkursy;
-    private List<KategoriaTematyczna> sKategorieTematyczne;
 
-    public Szkolenie(int sID, String sAkronim, Date sDataOd, Date sDataDo, String sTryb, int sIDkursy, List<KategoriaTematyczna> sKategorieTematyczne) {
+    public Szkolenie(int sID, String sAkronim, Date sDataOd, Date sDataDo, String sTryb, int sIDkursy) {
         this.sID = sID;
         this.sAkronim = sAkronim;
         this.sDataOd = sDataOd;
         this.sDataDo = sDataDo;
         this.sTryb = sTryb;
         this.sIDkursy = sIDkursy;
-        this.sKategorieTematyczne = sKategorieTematyczne;
     }
 
     public int getsID() {
@@ -68,14 +66,6 @@ public class Szkolenie {
 
     public void setsIDkursy(int sIDkursy) {
         this.sIDkursy = sIDkursy;
-    }
-
-    public List<KategoriaTematyczna> getsKategorieTematyczne() {
-        return sKategorieTematyczne;
-    }
-
-    public void setsKategorieTematyczne(List<KategoriaTematyczna> sKategorieTematyczne) {
-        this.sKategorieTematyczne = sKategorieTematyczne;
     }
 
 }
