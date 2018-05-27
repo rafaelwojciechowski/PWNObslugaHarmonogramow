@@ -13,6 +13,7 @@ import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
 import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
 import javaFX_obslugaHarmonogramow.model.Kurs;
 import javaFX_obslugaHarmonogramow.model.Szkolenie;
+import javaFX_obslugaHarmonogramow.model.Trener;
 import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -127,13 +128,13 @@ public class MenuController {
     private Button fxPrzypiszKat;
 
     @FXML
-    private TableView<?> fxTableMentorTrener;
+    private TableView<Trener> fxTableMentorTrener;
 
     @FXML
-    private TableColumn<?, ?> fxImie;
+    private TableColumn<Trener, String> fxImie;
 
     @FXML
-    private TableColumn<?, ?> fxNazwisko;
+    private TableColumn<Trener, String> fxNazwisko;
 
     @FXML
     private TableColumn<?, ?> fxMentorTrener;
@@ -370,13 +371,18 @@ public class MenuController {
     }
 
     @FXML
-    void wczytajKat(ActionEvent event) {
-
-    }
-
-    @FXML
     void wczytajKursy(ActionEvent event) {
         KursController kurc = new KursController();
+        wyswietlKursy(kurc.pokazKursy());
+    }
+
+    private ObservableList<Kurs> daneKursy;
+
+    private void wyswietlKursy(ArrayList <Kurs> kursik){
+        fxNazwaKursu.setCellValueFactory(new PropertyValueFactory<Kurs, String>("nazwa"));
+        fxLiczbaDni.setCellValueFactory(new PropertyValueFactory<Kurs, Integer>("ile_dni"));
+        daneKursy = FXCollections.observableArrayList(kursik);
+        NazwaKursu.setItems(daneKursy);
     }
 
     @FXML
