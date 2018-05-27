@@ -2,35 +2,65 @@ package javaFX_obslugaHarmonogramow.model;
 
 public class Trener {
 
-    private String imie, nazwisko, inicjaly;
+    private int tID;
+    private String tImie, tNazwisko, tInicjaly, tHaslo;
+    private boolean tMentor;
 
-    public Trener(String imie, String nazwisko, String inicjaly) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.inicjaly = inicjaly;
+    public Trener(int tID, String tImie, String tNazwisko, String tInicjaly, String tHaslo, boolean tMentor) {
+        this.tID = tID;
+        this.tImie = tImie;
+        this.tNazwisko = tNazwisko;
+        this.tInicjaly = tInicjaly;
+        this.tHaslo = tHaslo;
+        this.tMentor = tMentor;
     }
 
-    public String getImie() {
-        return imie;
+    public int gettID() {
+        return tID;
     }
 
-    public void setImie(String imie) {
-        this.imie = imie;
+    public void settID(int tID) {
+        this.tID = tID;
     }
 
-    public String getNazwisko() {
-        return nazwisko;
+    public String gettImie() {
+        return tImie;
     }
 
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
+    public void settImie(String tImie) {
+        this.tImie = tImie;
     }
 
-    public String getInicjaly() {
-        return inicjaly;
+    public String gettNazwisko() {
+        return tNazwisko;
     }
 
-    public void setInicjaly(String inicjaly) {
-        this.inicjaly = inicjaly;
+    public void settNazwisko(String tNazwisko) {
+        this.tNazwisko = tNazwisko;
     }
+
+    public String gettInicjaly() {
+        return tInicjaly;
+    }
+
+    public void settInicjaly(String tInicjaly) {
+        this.tInicjaly = tInicjaly;
+    }
+
+    public String gettHaslo() {
+        return tHaslo;
+    }
+
+    public void settHaslo(String tHaslo) {
+        this.tHaslo = tHaslo;
+    }
+
+    public boolean istMentor() {
+        return tMentor;
+    }
+
+    public void settMentor(boolean tMentor) {
+        this.tMentor = tMentor;
+    }
+
 }
