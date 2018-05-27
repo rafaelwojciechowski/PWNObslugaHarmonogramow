@@ -21,13 +21,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX_obslugaHarmonogramow.controller.MenuController">
    <children>
       <BorderPane layoutX="-2.0" layoutY="-1.0" prefHeight="550.0" prefWidth="770.0">
          <center>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                  <Tab text="SZKOLENIA (OK)">
+                  <Tab text="SZKOLENIA">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -148,8 +148,12 @@
                               </VBox>
                               <TableView layoutX="37.0" layoutY="214.0" prefHeight="200.0" prefWidth="698.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn prefWidth="75.0" text="Inicjały" />
+                                  <TableColumn prefWidth="75.0" text="Imię" />
+                                    <TableColumn prefWidth="75.0" text="Nazwisko" />
+                                    <TableColumn prefWidth="75.0" text="Akronim" />
+                                    <TableColumn prefWidth="142.0" text="Dzień szkolenia" />
+                                    <TableColumn prefWidth="142.0" text="Wolne?" />
                                 </columns>
                               </TableView>
                            </children>
@@ -178,30 +182,30 @@
                                           <Label text="Nazwisko użytkownika" GridPane.rowIndex="1" />
                                           <Label text="Hasło" GridPane.rowIndex="2" />
                                           <Label text="Czy mentor?" GridPane.rowIndex="3" />
-                                          <TextField GridPane.columnIndex="1" />
-                                          <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <TextField fx:id="fxImieUzytkownika" onAction="#onImieUzytkownika" GridPane.columnIndex="1" />
+                                          <ComboBox fx:id="fxComMentorTrener" onAction="#onComMentorTrener" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="fxNazwiskoUzytkownika" onAction="#onNazwiskoUzytkownika" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="fxHaslo" onAction="#onHaslo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                     </GridPane>
                                     <HBox prefHeight="60.0" prefWidth="600.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Dodaj użytkownika">
+                                          <Button fx:id="fxDodajUzytkownika" mnemonicParsing="false" onAction="#onDodajUzytkownika" text="Dodaj użytkownika">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Edytuj użytkownika">
+                                          <Button fx:id="fxEdytujUzytkownika" mnemonicParsing="false" onAction="#onEdytujUzytkownika" text="Edytuj użytkownika">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Usuń użytkownika">
+                                          <Button fx:id="fxUsunUzytkownika" mnemonicParsing="false" onAction="#onUsunUzytkownika" text="Usuń użytkownika">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Przypisz kategorię">
+                                          <Button fx:id="fxPrzypiszKat" mnemonicParsing="false" onAction="#onPrzypiszKat" text="Przypisz kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
@@ -210,12 +214,12 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <TableView layoutX="37.0" layoutY="214.0" prefHeight="200.0" prefWidth="698.0">
+                              <TableView fx:id="fxTableMentorTrener" layoutX="37.0" layoutY="214.0" prefHeight="200.0" prefWidth="698.0">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" text="Imię trenera" />
-                                    <TableColumn prefWidth="75.0" text="Nazwisko trenera" />
-                                    <TableColumn prefWidth="160.0" text="Mentor/trener" />
-                                    <TableColumn prefWidth="160.0" text="Kategoria" />
+                                    <TableColumn fx:id="fxImie" prefWidth="75.0" text="Imię trenera" />
+                                    <TableColumn fx:id="fxNazwisko" prefWidth="75.0" text="Nazwisko trenera" />
+                                    <TableColumn fx:id="fxMentorTrener" prefWidth="160.0" text="Mentor/trener" />
+                                    <TableColumn fx:id="fxKategoria" prefWidth="160.0" text="Kategoria" />
                                  </columns>
                               </TableView>
                            </children>
@@ -238,31 +242,31 @@
                                       </rowConstraints>
                                        <children>
                                           <Label text="Nazwa kategorii" />
-                                          <TextField GridPane.columnIndex="1" />
+                                          <TextField fx:id="fxNazwaKat" onAction="#onNazwaKat" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <HBox fx:id="fxKategorie" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Dodaj kategorię">
+                                          <Button fx:id="fxDodajKat" mnemonicParsing="false" onAction="#onDodajKat" text="Dodaj kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Edytu kategorię">
+                                          <Button fx:id="fxEdytujKat" mnemonicParsing="false" onAction="#onEdytujKat" text="Edytuj kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Usuń kategorię">
+                                          <Button fx:id="fxUsunKat" mnemonicParsing="false" onAction="#onUsunKat" text="Usuń kategorię">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <TableView prefHeight="200.0" prefWidth="200.0">
+                                    <TableView fx:id="fxNazwaKat" prefHeight="200.0" prefWidth="200.0">
                                       <columns>
-                                        <TableColumn prefWidth="330.0" text="Nazwa kategorii" />
+                                        <TableColumn fx:id="fxNazwaKat" prefWidth="330.0" text="Nazwa kategorii" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -289,33 +293,33 @@
                                        <children>
                                           <Label text="Nazwa kursu" />
                                           <Label text="Liczba dni trwania kursu" GridPane.rowIndex="1" />
-                                          <TextField GridPane.columnIndex="1" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="fxNazwaKursu" onAction="#onNazwaKursu" GridPane.columnIndex="1" />
+                                          <TextField fx:id="fxLiczbaDni" onAction="#onLiczbaDni" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Dodaj kurs">
+                                          <Button fx:id="fxDodajKurs" mnemonicParsing="false" onAction="#onDodajKurs" text="Dodaj kurs">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Edytu kurs">
+                                          <Button fx:id="fxEdytujKurs" mnemonicParsing="false" onAction="#onEdytujKurs" text="Edytu kurs">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Usuń kurs">
+                                          <Button fx:id="fxUsunKurs" mnemonicParsing="false" onAction="#onUsunKurs" text="Usuń kurs">
                                              <HBox.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </HBox.margin>
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <TableView prefHeight="200.0" prefWidth="200.0">
+                                    <TableView fx:id="NazwaKursu" prefHeight="200.0" prefWidth="200.0">
                                        <columns>
-                                          <TableColumn prefWidth="265.0" text="Nazwa kursu" />
-                                          <TableColumn minWidth="0.0" prefWidth="215.0" text="Liczba dni trwania" />
+                                          <TableColumn fx:id="fxNazwaKursu" prefWidth="265.0" text="Nazwa kursu" />
+                                          <TableColumn fx:id="fxLiczbaDni" minWidth="0.0" prefWidth="215.0" text="Liczba dni trwania" />
                                        </columns>
                                     </TableView>
                                  </children>
