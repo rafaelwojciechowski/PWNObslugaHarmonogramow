@@ -30,10 +30,15 @@ public class LogowanieController {
     @FXML
     void onButZaloguj(ActionEvent event) throws SQLException {
         DaoToMySQL dao = new DaoToMySQL();
+            // spróbuj przepisać tego selecta tak aby od razu sprawdzał czy istnieje rekord o podanych inicjałach i haśle
+            // select w tej formie nie zwróci żadnych rekordów, jeżeli nie istnieje rekord o podanych inicjałach
+            // spróbuj zmodyfikować tego selecta, aby zawsze zwracał rekord niezależnie od tego czy inicjały istnieją - podpowiedź: skorzystaj z count(1)
             PreparedStatement st = dao.getCon().prepareStatement("select inicjaly,haslo from trenerzy where inicjaly = ?");
             st.setString(1,fxTxtLogowanie.getText());
             st.execute();
             ResultSet rs = st.getResultSet();
+            // wyrzucany jest błąd, bo najpierw trzeba pobrać rekord ( rs.next() )
+            // jeżeli wstawisz tą komendę w if'a to dodatkowo będziesz sprawdzał czy zaczytał się rekord
             if(rs.getString("haslo").equals(fxTxtHaslo.getText())) System.out.println("glowne okno programu");
             else System.out.println("niepoprawne dane");
     }
