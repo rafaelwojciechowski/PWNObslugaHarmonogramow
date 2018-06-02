@@ -30,9 +30,11 @@ public class LogowanieController {
     @FXML
     void onButZaloguj(ActionEvent event) throws SQLException {
         DaoToMySQL dao = new DaoToMySQL();
-            // spróbuj przepisać tego selecta tak aby od razu sprawdzał czy istnieje rekord o podanych inicjałach i haśle
-            // select w tej formie nie zwróci żadnych rekordów, jeżeli nie istnieje rekord o podanych inicjałach
-            // spróbuj zmodyfikować tego selecta, aby zawsze zwracał rekord niezależnie od tego czy inicjały istnieją - podpowiedź: skorzystaj z count(1)
+            // Poprawka - trzeba w tym miejscu sprawdzić czy dany trener jest trenerem czy też powinien mieć wyższe uprawnienia (kolumna Trenerzy.mentor)
+            // Jeżeli jest tylko trenerem to trzeba odpalić poniższą metodę statyczną:
+            // MenuGlowneController.ukryjPrzyciski();
+            // Jeżeli jest mentorem lub wklepywaczem to trzeba użyć poniższej metody statycznej:
+            // MenuGlowneController.pokazPrzyciski();
             PreparedStatement st = dao.getCon().prepareStatement("select inicjaly,haslo from trenerzy where inicjaly = ?");
             st.setString(1,fxTxtLogowanie.getText());
             st.execute();
@@ -41,6 +43,11 @@ public class LogowanieController {
             // jeżeli wstawisz tą komendę w if'a to dodatkowo będziesz sprawdzał czy zaczytał się rekord
             if(rs.getString("haslo").equals(fxTxtHaslo.getText())) System.out.println("glowne okno programu");
             else System.out.println("niepoprawne dane");
+
+
+
+            // Po zalgowaniu proponuję zamknąc to okno i otworzyć Menu główne przez
+            // StageController sc = new StageController("menuGlowne", "Menu główne");
     }
     }
 
