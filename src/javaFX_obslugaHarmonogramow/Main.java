@@ -10,6 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        // Proponuję skorzystać z poniższego zamiast całej zawartości tej metody:
+        // StageController sc = new StageController("logowanie", "Logowanie");
+
         Parent root = FXMLLoader.load(getClass().getResource("view/logowanie.fxml"));
         primaryStage.setTitle("Michał LOL");
         primaryStage.setScene(new Scene(root, 770, 550));
