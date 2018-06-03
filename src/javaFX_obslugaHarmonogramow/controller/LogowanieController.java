@@ -30,7 +30,7 @@ public class  LogowanieController {
     @FXML
 
     public void onButZaloguj(ActionEvent event) throws SQLException {
-        conn=LoginModel.ConnectDB();
+            conn=LoginModel.ConnectDB();
 
         String sql = "select count(*) from Trenerzy where inicjaly = ? and haslo = ?";
         try {
@@ -39,12 +39,7 @@ public class  LogowanieController {
             ps.setString(2, fxTxtHaslo.getText());
             rs = ps.executeQuery();
             if (rs.next()) {
-                Stage primaryStage = new Stage();
-                URL url = new File("src/javaFX_obslugaHarmonogramow/view/menu_glowne2.fxml").toURL();
-                Parent root = FXMLLoader.load(url);
-                primaryStage.setTitle("Menu główne");
-                primaryStage.setScene(new Scene(root, 770, 550));
-                primaryStage.show();
+            StageController sc = new StageController("menuGlowne", "Menu główne");
             } else {
                 Alert error = new Alert(Alert.AlertType.ERROR);
                 error.setHeaderText("Error");
