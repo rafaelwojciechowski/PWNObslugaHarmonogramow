@@ -1,71 +1,70 @@
 package javaFX_obslugaHarmonogramow.model;
 
+
 import java.util.Date;
-import java.util.List;
 
 public class Szkolenie {
+    private String akronim;
+    private Date data_od;
+    private Date data_do;
+    private String typ_szkolen;
+    private String nazwa;
 
-    private int sID;
-    private String sAkronim;
-    private Date sDataOd, sDataDo;
-    private String sTryb;
-    private int sIDkursy;
-
-    public Szkolenie(int sID, String sAkronim, Date sDataOd, Date sDataDo, String sTryb, int sIDkursy) {
-        this.sID = sID;
-        this.sAkronim = sAkronim;
-        this.sDataOd = sDataOd;
-        this.sDataDo = sDataDo;
-        this.sTryb = sTryb;
-        this.sIDkursy = sIDkursy;
+    public Szkolenie() {
     }
 
-    public int getsID() {
-        return sID;
+    public Szkolenie(String akronim, Date data_od, Date data_do, String typ_szkolen, String nazwa) {
     }
 
-    public void setsID(int sID) {
-        this.sID = sID;
+    public String getAkronim() {
+        return akronim;
     }
 
-    public String getsAkronim() {
-        return sAkronim;
+    public void setAkronim(String akronim) {
+        this.akronim = akronim;
     }
 
-    public void setsAkronim(String sAkronim) {
-        this.sAkronim = sAkronim;
+    public Date getData_od() {
+        return data_od;
     }
 
-    public Date getsDataOd() {
-        return sDataOd;
+    public void setData_od(Date data_od) {
+        this.data_od = data_od;
     }
 
-    public void setsDataOd(Date sDataOd) {
-        this.sDataOd = sDataOd;
+    public Date getData_do() {
+        return data_do;
     }
 
-    public Date getsDataDo() {
-        return sDataDo;
+    public void setData_do(Date data_do) {
+        this.data_do = data_do;
     }
 
-    public void setsDataDo(Date sDataDo) {
-        this.sDataDo = sDataDo;
+    public String getTyp_szkolen() {
+        return typ_szkolen;
     }
 
-    public String getsTryb() {
-        return sTryb;
+    public void setTyp_szkolen(String typ_szkolen) {
+        this.typ_szkolen = typ_szkolen;
     }
 
-    public void setsTryb(String sTryb) {
-        this.sTryb = sTryb;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public int getsIDkursy() {
-        return sIDkursy;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
-    public void setsIDkursy(int sIDkursy) {
-        this.sIDkursy = sIDkursy;
+    @Override
+    public String toString() {
+        return "Szkolenie{" +
+                "akronim='" + akronim + '\'' +
+                ", data_od=" + data_od +
+                ", data_do=" + data_do +
+                ", typ_szkolenia=" + typ_szkolen +
+                ", nazwa_szkolenia='" + nazwa + '\'' +
+                '}';
     }
-
 }
+
