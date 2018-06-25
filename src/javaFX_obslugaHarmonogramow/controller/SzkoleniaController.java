@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -186,6 +188,7 @@ public class SzkoleniaController {
         fxColNazwaSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("nazwa"));
         fxTabviewSzkolenia.getItems().addAll(szkolenieView);
     }
+
 }
 
 

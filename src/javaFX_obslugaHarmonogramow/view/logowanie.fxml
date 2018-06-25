@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX_obslugaHarmonogramow.controller.LogowanieController">
+<Pane fx:id="fxPaneLog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX_obslugaHarmonogramow.controller.LogowanieController">
    <children>
       <GridPane layoutX="100.0" layoutY="150.0">
         <columnConstraints>
@@ -33,16 +33,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="fxTxtLogowanie" maxHeight="25.0" minHeight="25.0" minWidth="150.0" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </TextField>
+             <TextField fx:id="fxTxtLogowanie" GridPane.columnIndex="1" />
             <PasswordField fx:id="fxTxtHaslo" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </PasswordField>
+
          </children>
       </GridPane>
       <Button fx:id="fxButZaloguj" alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="237.0" mnemonicParsing="false" onAction="#onButZaloguj" text="Zaloguj" textAlignment="CENTER">

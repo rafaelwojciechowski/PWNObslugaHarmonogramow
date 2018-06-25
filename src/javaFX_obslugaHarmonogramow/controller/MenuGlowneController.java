@@ -3,6 +3,7 @@ package javaFX_obslugaHarmonogramow.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -25,27 +26,31 @@ public class MenuGlowneController {
 
     @FXML
     void onMGKategorie(ActionEvent event) {
-        zamknijBierzaceIOtworzNoweOkno("TestKategorie", "Kategorie");
+        otworzNoweOkno("Kategorie", "Kategorie");
     }
 
     @FXML
     void onMGKursy(ActionEvent event) {
-        zamknijBierzaceIOtworzNoweOkno("TestKursy", "Kursy");
+        otworzNoweOkno("Kursy", "Kursy");
     }
 
     @FXML
     void onMGSzkolenia(ActionEvent event) {
-        zamknijBierzaceIOtworzNoweOkno("TestSzkolenia", "Szkolenia");
+
+        otworzNoweOkno("szkolenia", "Szkolenia");
     }
 
     @FXML
     void onMGTerenerzy(ActionEvent event) {
-        zamknijBierzaceIOtworzNoweOkno("TestTrenerzy", "Trenerzy");
+        otworzNoweOkno("trenerzy", "Trenerzy");
     }
 
     @FXML
     void onMGWyloguj(ActionEvent event) {
-        zamknijBierzaceIOtworzNoweOkno("logowanie", "Logowanie");
+        for (Stage s : StageController.getListaStage().values()) {
+            s.close();
+        }
+        otworzNoweOkno("logowanie", "Logowanie");
     }
 
     @FXML
@@ -58,6 +63,10 @@ public class MenuGlowneController {
         fxMGKategorie.setVisible(widoczny);
         fxMGTrenerzy.setVisible(widoczny);
         fxMGKursy.setVisible(widoczny);
+
+//        fxMGKategorie.setDisable(false);
+//        fxMGTrenerzy.setDisable(false);
+//        fxMGKursy.setDisable(false);
 
     }
 
@@ -72,10 +81,16 @@ public class MenuGlowneController {
         widoczny = true;
     }
 
-    private void zamknijBierzaceIOtworzNoweOkno(String fxmlNazwa, String tytul) {
-        Stage s = (Stage)fxMGWyloguj.getScene().getWindow();
-        s.close();
+    private void otworzNoweOkno(String fxmlNazwa, String tytul) {
         StageController sc = new StageController(fxmlNazwa, tytul);
+    }
+
+    public void zamknijOkno() {
+        Scene s = fxMGWyloguj.getScene();
+        if (s != null ) {
+            Stage t = (Stage) s.getWindow();
+            t.close();
+        }
     }
 
 }

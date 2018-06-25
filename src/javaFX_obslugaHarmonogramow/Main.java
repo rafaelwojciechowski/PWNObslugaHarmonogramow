@@ -2,6 +2,7 @@ package javaFX_obslugaHarmonogramow;
 
 import javaFX_obslugaHarmonogramow.controller.StageController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +14,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         StageController sc = new StageController("logowanie", "Logowanie");
-
+        primaryStage.setOnCloseRequest(e -> Platform.exit());
+        primaryStage.close();
     }
 
 

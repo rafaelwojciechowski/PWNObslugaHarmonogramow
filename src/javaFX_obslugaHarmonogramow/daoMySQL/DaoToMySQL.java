@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DaoToMySQL {
     final static String draiverMySQl = "com.mysql.jdbc.Driver";
-    final static String url = "jdbc:mysql://fk.edu.pl/fkedupl_pwngr?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    final static String url = "jdbc:mysql://fk.edu.pl/fkedupl_pwngr";
     final static String uid = "fkedupl_pwn";
     final static String pwd = "pWn20180527";
     private Connection con = null;

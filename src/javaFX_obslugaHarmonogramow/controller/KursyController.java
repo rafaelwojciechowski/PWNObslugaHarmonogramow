@@ -16,10 +16,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
-import javaFX_obslugaHarmonogramow.model.KategoriaTematyczna;
 import javaFX_obslugaHarmonogramow.model.Kurs;
 
-public class KategorieController {
+public class KursyController {
 
     @FXML
     private ResourceBundle resources;
@@ -31,6 +30,9 @@ public class KategorieController {
     private TextField fxTxtNazwa;
 
     @FXML
+    private Slider fxLiczbaDniSlider;
+
+    @FXML
     private Button fxButDodajKurs;
 
     @FXML
@@ -40,20 +42,34 @@ public class KategorieController {
     private Button fxButUsunKurs;
 
     @FXML
-    private TableView<KategoriaTematyczna> fxTabviewKat;
+    private Label fxLiczbaDniEtykieta;
 
     @FXML
-    private TableColumn<KategoriaTematyczna, String> fxColNazwa;
+    private TableView<Kurs> fxTabviewKursy;
+
+    @FXML
+    private TableColumn<Kurs, String> fxColNazwa;
+
+    @FXML
+    private TableColumn<Kurs, Integer> fxColLiczbaDni;
 
     private DaoToMySQL con = new DaoToMySQL();
+
+    @FXML
+    void onLiczbaDniZmianaWartosci(DragEvent event) {
+        System.out.println(fxLiczbaDniSlider.getValue());
+//        fxLiczbaDniEtykieta.setText("Liczba dni: " + fxLiczbaDniSlider.getValue());
+    }
+
 
     @FXML
     void onButDodajKurs(MouseEvent event) {
         Connection conn = con.getCon();
         try {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO fkedupl_pwngr.Kat_tematyczne " +
-                    "(nazwa) VALUES (?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO fkedupl_pwngr.Kursy " +
+                    "(nazwa, ile_dni) VALUES (?,?)");
             ps.setString(1,fxTxtNazwa.getText());
+            ps.setInt(2,(int)fxLiczbaDniSlider.getValue());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,23 +79,24 @@ public class KategorieController {
 
     @FXML
     void onButEdytujKurs(MouseEvent event) {
-        KategoriaTematyczna kat = fxTabviewKat.getSelectionModel().getSelectedItem();
+        Kurs kurs = fxTabviewKursy.getSelectionModel().getSelectedItem();
         try {
-            PreparedStatement ps = con.getCon().prepareStatement("UPDATE fkedupl_pwngr.kat_tematyczne SET nazwa=? WHERE id=?");
+            PreparedStatement ps = con.getCon().prepareStatement("UPDATE fkedupl_pwngr.Kursy SET nazwa=?, ile_dni=? WHERE id=?");
             ps.setString(1,fxTxtNazwa.getText());
-            ps.setInt(2,kat.getId());
+            ps.setInt(2,(int)fxLiczbaDniSlider.getValue());
+            ps.setInt(3,kurs.getID());
             ps.executeUpdate();
             pokazListe();
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setContentText("Wypełnij wszytskie pola przed edycją kategorii!");
+            alert.setContentText("Wypełnij wszytskie pola przed edycją kursu!");
             alert.showAndWait();
         } catch (NullPointerException nulle){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setContentText("Wypełnij wszystkie pola przed edycją kategorii!");
+            alert.setContentText("Wypełnij wszystkie pola przed edycją kursu!");
             alert.showAndWait();
         }
     }
@@ -87,10 +104,10 @@ public class KategorieController {
     @FXML
     void onButUsunKurs(MouseEvent event) {
         Connection conn = con.getCon();
-        KategoriaTematyczna kat = fxTabviewKat.getSelectionModel().getSelectedItem();
+        Kurs kurs = fxTabviewKursy.getSelectionModel().getSelectedItem();
         try {
-            PreparedStatement ps = conn.prepareStatement("DELETE FROM fkedupl_pwngr.kat_tematyczne WHERE id=?");
-            ps.setInt(1, kat.getId());
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM fkedupl_pwngr.Kursy WHERE id=?");
+            ps.setInt(1, kurs.getID());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,38 +118,49 @@ public class KategorieController {
     @FXML
     void initialize() {
 
+        fxLiczbaDniSlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0,
+                                Number arg1, Number arg2) {
+                fxLiczbaDniEtykieta.setText(String.format("%3.0f", arg2)); //new value
+            }
+
+        });
+
         pokazListe();
     }
 
     private void pokazListe() {
 //        con = new DaoToMySQL();
         try {
-            ObservableList<KategoriaTematyczna> listaKursow = FXCollections.observableArrayList(pobierzListeKursow(con.getCon()));
+            ObservableList<Kurs> listaKursow = FXCollections.observableArrayList(pobierzListeKursow(con.getCon()));
             ustawKolumny(listaKursow);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void ustawKolumny(ObservableList<KategoriaTematyczna> listaKursow) {
-        fxTabviewKat.getItems().clear();
-        fxColNazwa.setCellValueFactory(new PropertyValueFactory<KategoriaTematyczna,String>("nazwa"));
-        fxTabviewKat.getItems().addAll(listaKursow);
+    private void ustawKolumny(ObservableList<Kurs> listaKursow) {
+        fxTabviewKursy.getItems().clear();
+        fxColNazwa.setCellValueFactory(new PropertyValueFactory<Kurs,String>("nazwa"));
+        fxColLiczbaDni.setCellValueFactory(new PropertyValueFactory<Kurs,Integer>("ile_dni"));
+        fxTabviewKursy.getItems().addAll(listaKursow);
     }
 
-    private List<KategoriaTematyczna> pobierzListeKursow(Connection con) throws SQLException {
-        List<KategoriaTematyczna> lista = new ArrayList<>();
+    private List<Kurs> pobierzListeKursow(Connection con) throws SQLException {
+        List<Kurs> lista = new ArrayList<>();
 
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("select * from Kat_tematyczne");
+        ResultSet rs = st.executeQuery("select * from Kursy");
         int x = 0;
         while (rs.next()){
             x++;
-            lista.add(new KategoriaTematyczna(rs.getInt("id"),rs.getString("Nazwa")));
+            lista.add(new Kurs(rs.getInt("id"),rs.getString("Nazwa"),rs.getInt("ile_dni")));
         }
         return lista;
     }
 
 
-}
 
+}
