@@ -1,53 +1,65 @@
 package javaFX_obslugaHarmonogramow.controller;
 
+import java.io.File;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.sql.*;
 
-import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
+import javaFX_obslugaHarmonogramow.model.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
-public class LogowanieController {
+public class  LogowanieController {
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs =null;
 
 
     @FXML
-    private TextArea fxTxtLogowanie;
+    private TextField fxTxtLogowanie;
 
     @FXML
     private PasswordField fxTxtHaslo;
 
+
+
     @FXML
-    private Button fxButZaloguj;
 
-    @FXML
-    void onButZaloguj(ActionEvent event) throws SQLException {
-        DaoToMySQL dao = new DaoToMySQL();
-            // Poprawka - trzeba w tym miejscu sprawdzić czy dany trener jest trenerem czy też powinien mieć wyższe uprawnienia (kolumna Trenerzy.mentor)
-            // Jeżeli jest tylko trenerem to trzeba odpalić poniższą metodę statyczną:
-            // MenuGlowneController.ukryjPrzyciski();
-            // Jeżeli jest mentorem lub wklepywaczem to trzeba użyć poniższej metody statycznej:
-            // MenuGlowneController.pokazPrzyciski();
-            PreparedStatement st = dao.getCon().prepareStatement("select inicjaly,haslo from trenerzy where inicjaly = ?");
-            st.setString(1,fxTxtLogowanie.getText());
-            st.execute();
-            ResultSet rs = st.getResultSet();
-            // wyrzucany jest błąd, bo najpierw trzeba pobrać rekord ( rs.next() )
-            // jeżeli wstawisz tą komendę w if'a to dodatkowo będziesz sprawdzał czy zaczytał się rekord
-            if(rs.getString("haslo").equals(fxTxtHaslo.getText())) System.out.println("glowne okno programu");
-            else System.out.println("niepoprawne dane");
+    public void onButZaloguj(ActionEvent event) throws SQLException {
+            conn=LoginModel.ConnectDB();
 
-
-
-            // Po zalgowaniu proponuję zamknąc to okno i otworzyć Menu główne przez
-            // StageController sc = new StageController("menuGlowne", "Menu główne");
+        String sql = "select count(*) from Trenerzy where inicjaly = ? and haslo = ?";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, fxTxtLogowanie.getText());
+            ps.setString(2, fxTxtHaslo.getText());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+            StageController sc = new StageController("menuGlowne", "Menu główne");
+            } else {
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setHeaderText("Error");
+                error.setContentText("Błędny login lub hasło");
+                error.setTitle("Błąd logowania");
+                error.show();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
-    }
+
+
+
+
+}
+
+
+
+
+
+
 
