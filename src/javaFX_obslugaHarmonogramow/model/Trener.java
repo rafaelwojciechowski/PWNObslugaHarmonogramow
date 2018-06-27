@@ -2,64 +2,64 @@ package javaFX_obslugaHarmonogramow.model;
 
 public class Trener {
 
-    private String Imie, Nazwisko, Inicjaly, Haslo;
-    private int ID, Mentor;
+    private String imie, nazwisko, inicjaly, haslo;
+    private int id, mentor;
 
-    public Trener(int ID, String Imie, String Nazwisko, String Inicjaly, String Haslo, int Mentor) {
-        this.ID = ID;
-        this.Imie = Imie;
-        this.Nazwisko = Nazwisko;
-        this.Inicjaly = Inicjaly;
-        this.Haslo = Haslo;
-        this.Mentor = Mentor;
+    public Trener(int id, String Imie, String Nazwisko, String Inicjaly, String Haslo, int Mentor) {
+        this.id = id;
+        this.imie = Imie;
+        this.nazwisko = Nazwisko;
+        this.inicjaly = Inicjaly;
+        this.haslo = Haslo;
+        this.mentor = Mentor;
     }
 
 
     public String getImie() {
-        return Imie;
+        return imie;
     }
 
     public void setImie(String imie) {
-        Imie = imie;
+        this.imie = imie;
     }
 
     public String getNazwisko() {
-        return Nazwisko;
+        return nazwisko;
     }
 
     public void setNazwisko(String nazwisko) {
-        Nazwisko = nazwisko;
+        this.nazwisko = nazwisko;
     }
 
     public String getInicjaly() {
-        return Inicjaly;
+        return inicjaly;
     }
 
     public void setInicjaly(String inicjaly) {
-        Inicjaly = inicjaly;
+        this.inicjaly = inicjaly;
     }
 
     public String getHaslo() {
-        return Haslo;
+        return haslo;
     }
 
     public void setHaslo(String haslo) {
-        Haslo = haslo;
+        this.haslo = haslo;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getMentor() {
-        return Mentor;
+        return mentor;
     }
 
     public void setMentor(int mentor) {
-        Mentor = mentor;
+        this.mentor = mentor;
     }
 }

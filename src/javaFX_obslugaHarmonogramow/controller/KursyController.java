@@ -84,7 +84,7 @@ public class KursyController {
             PreparedStatement ps = con.getCon().prepareStatement("UPDATE fkedupl_pwngr.Kursy SET nazwa=?, ile_dni=? WHERE id=?");
             ps.setString(1,fxTxtNazwa.getText());
             ps.setInt(2,(int)fxLiczbaDniSlider.getValue());
-            ps.setInt(3,kurs.getID());
+            ps.setInt(3,kurs.getId());
             ps.executeUpdate();
             pokazListe();
         } catch (SQLException e) {
@@ -107,7 +107,7 @@ public class KursyController {
         Kurs kurs = fxTabviewKursy.getSelectionModel().getSelectedItem();
         try {
             PreparedStatement ps = conn.prepareStatement("DELETE FROM fkedupl_pwngr.Kursy WHERE id=?");
-            ps.setInt(1, kurs.getID());
+            ps.setInt(1, kurs.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -152,7 +152,7 @@ public class KursyController {
         List<Kurs> lista = new ArrayList<>();
 
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("select * from Kursy");
+        ResultSet rs = st.executeQuery("select * from Kursy ORDER BY ID DESC");
         int x = 0;
         while (rs.next()){
             x++;

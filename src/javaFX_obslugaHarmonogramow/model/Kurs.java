@@ -2,12 +2,12 @@ package javaFX_obslugaHarmonogramow.model;
 
 public class Kurs {
 
-    private int ID;
+    private int id;
     private String nazwa;
     private int ile_dni;
 
-    public Kurs(int ID, String nazwa, int iledni) {
-        this.ID = ID;
+    public Kurs(int id, String nazwa, int iledni) {
+        this.id = id;
         this.nazwa = nazwa;
         this.ile_dni = iledni;
     }
@@ -17,12 +17,12 @@ public class Kurs {
         this.ile_dni = ile_dni;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNazwa() {

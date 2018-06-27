@@ -4,12 +4,10 @@ import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javaFX_obslugaHarmonogramow.model.Trener;
 
 import java.sql.*;
@@ -119,7 +117,7 @@ public class TrenerController {
             } else{
                 ps.setInt(5, 2);
             }
-            ps.setInt(6,trener.getID());
+            ps.setInt(6,trener.getId());
             ps.executeUpdate();
             pokazListe();
         } catch (SQLException e) {
@@ -142,7 +140,7 @@ public class TrenerController {
         Trener trener = fxTabviewTrener.getSelectionModel().getSelectedItem();
         try {
             PreparedStatement ps = conn.prepareStatement("DELETE FROM fkedupl_pwngr.Trenerzy WHERE id=?");
-            ps.setInt(1, trener.getID());
+            ps.setInt(1, trener.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -183,7 +181,7 @@ public class TrenerController {
         int x = 0;
         while (rs.next()){
             x++;
-            lista.add(new Trener(x,rs.getString("imie"),rs.getString("nazwisko"),rs.getString("inicjaly"),
+            lista.add(new Trener(rs.getInt("id"),rs.getString("imie"),rs.getString("nazwisko"),rs.getString("inicjaly"),
             rs.getString("haslo"),rs.getInt("mentor")));
         }
         return lista;

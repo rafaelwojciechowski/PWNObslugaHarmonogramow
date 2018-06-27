@@ -65,7 +65,7 @@ public class KategorieController {
     void onButEdytujKurs(MouseEvent event) {
         KategoriaTematyczna kat = fxTabviewKat.getSelectionModel().getSelectedItem();
         try {
-            PreparedStatement ps = con.getCon().prepareStatement("UPDATE fkedupl_pwngr.kat_tematyczne SET nazwa=? WHERE id=?");
+            PreparedStatement ps = con.getCon().prepareStatement("UPDATE fkedupl_pwngr.Kat_tematyczne SET nazwa=? WHERE id=?");
             ps.setString(1,fxTxtNazwa.getText());
             ps.setInt(2,kat.getId());
             ps.executeUpdate();
@@ -89,7 +89,7 @@ public class KategorieController {
         Connection conn = con.getCon();
         KategoriaTematyczna kat = fxTabviewKat.getSelectionModel().getSelectedItem();
         try {
-            PreparedStatement ps = conn.prepareStatement("DELETE FROM fkedupl_pwngr.kat_tematyczne WHERE id=?");
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM fkedupl_pwngr.Kat_tematyczne WHERE id=?");
             ps.setInt(1, kat.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -124,7 +124,7 @@ public class KategorieController {
         List<KategoriaTematyczna> lista = new ArrayList<>();
 
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("select * from Kat_tematyczne");
+        ResultSet rs = st.executeQuery("select * from Kat_tematyczne ORDER BY ID DESC");
         int x = 0;
         while (rs.next()){
             x++;

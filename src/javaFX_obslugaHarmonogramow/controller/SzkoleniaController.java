@@ -161,7 +161,7 @@ public class SzkoleniaController {
         ArrayList<Szkolenie> szkolenieLista = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT sz.akronim, sz.data_od, sz.data_do, sz.typ_szkolen, k.nazwa FROM Szkolenia as sz LEFT JOIN Kursy as k on sz.Kursy_id = k.id;");
+            ResultSet rs = st.executeQuery("SELECT sz.akronim, sz.data_od, sz.data_do, sz.typ_szkolen, k.nazwa FROM Szkolenia as sz LEFT JOIN Kursy as k on sz.Kursy_id = k.id ORDER BY sz.ID DESC;");
             while (rs.next()){
                 Szkolenie szkolenie = new Szkolenie();
                 String akronim = rs.getString("akronim");
