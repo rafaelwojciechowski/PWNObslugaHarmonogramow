@@ -4,6 +4,7 @@ package javaFX_obslugaHarmonogramow.model;
 import java.util.Date;
 
 public class Szkolenie {
+    private int id;
     private String akronim;
     private Date data_od;
     private Date data_do;
@@ -13,7 +14,21 @@ public class Szkolenie {
     public Szkolenie() {
     }
 
-    public Szkolenie(String akronim, Date data_od, Date data_do, String typ_szkolen, String nazwa) {
+    public Szkolenie(int id, String akronim, Date data_od, Date data_do, String typ_szkolen, String nazwa) {
+        this.id = id;
+        this.akronim = akronim;
+        this.data_od = data_od;
+        this.data_do = data_do;
+        this.typ_szkolen = typ_szkolen;
+        this.nazwa = nazwa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAkronim() {

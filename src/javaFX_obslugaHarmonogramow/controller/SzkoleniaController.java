@@ -81,9 +81,11 @@ public class SzkoleniaController {
             ps.setString(1,fxTxtAkronim.getText());
             ps.setDate(2, java.sql.Date.valueOf(fxDatDataOd.getValue()));
             ps.setDate(3, java.sql.Date.valueOf(fxDatDataDo.getValue()));
-            ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()));
+            ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()).replace("Dzienne", "d").replace("Weekendowe", "w"));
             ps.setString(5, String.valueOf(fxComNazwaKursu.getValue()));
             ps.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e){
+            pokazAlert("ERROR", "Podany przez Ciebie akronim już jest w użyciu. Podaj inny akronim przed kontynuacją");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -95,27 +97,22 @@ public class SzkoleniaController {
         Connection con = connection.getCon();
         Szkolenie szkolenie = fxTabviewSzkolenia.getSelectionModel().getSelectedItem();
         try {
-            PreparedStatement ps = con.prepareStatement("UPDATE fkedupl_pwngr.Szkolenia SET akronim=?, data_od=?, data_do=?, typ_szkolen=?, Kursy_id=(select id from Kursy where nazwa = ?) WHERE akronim=?;");
+            PreparedStatement ps = con.prepareStatement("UPDATE fkedupl_pwngr.Szkolenia SET akronim=?, data_od=?, data_do=?, typ_szkolen=?, Kursy_id=(select id from Kursy where nazwa = ?) WHERE id=?;");
             ps.setString(1,fxTxtAkronim.getText());
             try {
                 ps.setDate(2, java.sql.Date.valueOf(fxDatDataOd.getValue()));
                 ps.setDate(3, java.sql.Date.valueOf(fxDatDataDo.getValue()));
-            }catch (NullPointerException nulle){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR");
-                alert.setContentText("Wypełnij wszystkie pola przed edycją szkolenia!");
-                alert.showAndWait();
+            } catch (NullPointerException nulle){
+                pokazAlert("ERROR", "Wypełnij wszytskie pola przed edycją szkolenia!");
             }
-            ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()));
+            ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()).replace("Dzienne", "d").replace("Weekendowe", "w"));
             ps.setString(5, String.valueOf(fxComNazwaKursu.getValue()));
-            ps.setString(6, szkolenie.getAkronim());
+            ps.setInt(6, szkolenie.getId());
             ps.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e){
+            pokazAlert("ERROR", "Podany przez Ciebie akronim już jest w użyciu. Podaj inny akronim przed kontynuacją");
         } catch (SQLException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setContentText("Wypełnij wszytskie pola przed edycją szkolenia!");
-            alert.showAndWait();
         }
         populaTetableView();
     }
@@ -125,8 +122,11 @@ public class SzkoleniaController {
         Connection con = connection.getCon();
         Szkolenie szkolenie = fxTabviewSzkolenia.getSelectionModel().getSelectedItem();
         try {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM fkedupl_pwngr.Szkolenia WHERE akronim=?");
-            ps.setString(1,szkolenie.getAkronim());
+            PreparedStatement ps = con.prepareStatement("DELETE FROM fkedupl_pwngr.Szkolenia WHERE id=?");
+            ps.setInt(1,szkolenie.getId());
+            ps.executeUpdate();
+            ps = con.prepareStatement("DELETE FROM fkedupl_pwngr.Dni_szkolenia_trenerzy WHERE szkolenia_id=?");
+            ps.setInt(1,szkolenie.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -137,7 +137,7 @@ public class SzkoleniaController {
     @FXML
     void initialize() {
         populaTetableView();
-        fxComTypSzkolenia.getItems().addAll("d","w");
+        fxComTypSzkolenia.getItems().addAll("Dzienne","Weekendowe");
 
         ObservableList<String> nazwa;
         ArrayList<String> nazwaSzkolen = new ArrayList<>();
@@ -161,14 +161,16 @@ public class SzkoleniaController {
         ArrayList<Szkolenie> szkolenieLista = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT sz.akronim, sz.data_od, sz.data_do, sz.typ_szkolen, k.nazwa FROM Szkolenia as sz LEFT JOIN Kursy as k on sz.Kursy_id = k.id ORDER BY sz.ID DESC;");
+            ResultSet rs = st.executeQuery("SELECT sz.ID, sz.akronim, sz.data_od, sz.data_do, sz.typ_szkolen, k.nazwa FROM Szkolenia as sz LEFT JOIN Kursy as k on sz.Kursy_id = k.id ORDER BY sz.ID DESC;");
             while (rs.next()){
                 Szkolenie szkolenie = new Szkolenie();
+                int id = rs.getInt("id");
                 String akronim = rs.getString("akronim");
                 Date data_od = rs.getDate("data_od");
                 Date data_do = rs.getDate("data_do");
-                String typ_szkolen = rs.getString("typ_szkolen");
+                String typ_szkolen = rs.getString("typ_szkolen").replace("d", "Dzienne").replace("w", "Weekendowe");
                 String nazwa = rs.getString("nazwa");
+                szkolenie.setId(id);
                 szkolenie.setAkronim(akronim);
                 szkolenie.setData_od(data_od);
                 szkolenie.setData_do(data_do);
@@ -187,6 +189,13 @@ public class SzkoleniaController {
         fxColTypSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("typ_szkolen"));
         fxColNazwaSzkolenia.setCellValueFactory(new PropertyValueFactory<Szkolenie, String>("nazwa"));
         fxTabviewSzkolenia.getItems().addAll(szkolenieView);
+    }
+
+    private void pokazAlert(String tytul, String tekst) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(tytul);
+        alert.setContentText(tekst);
+        alert.showAndWait();
     }
 
 }

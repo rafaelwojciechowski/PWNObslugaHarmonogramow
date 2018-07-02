@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -35,8 +37,28 @@ public class LogowanieController {
     @FXML
     private Pane fxPaneLog;
 
+
     @FXML
-    void onButZaloguj(ActionEvent event) throws SQLException {
+    void onEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER ) {
+            try {
+                zaloguj();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    void onButZaloguj(ActionEvent event) {
+        try {
+            zaloguj();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void zaloguj() throws SQLException {
         DaoToMySQL dao = new DaoToMySQL();
         PreparedStatement st = dao.getCon().prepareStatement("SELECT mentor FROM Trenerzy WHERE inicjaly = ? AND haslo = ?");
         st.setString(1,fxTxtLogowanie.getText());
@@ -57,5 +79,6 @@ public class LogowanieController {
             System.out.println("Błędna para login/hasło");
         }
     }
+
     }
 
