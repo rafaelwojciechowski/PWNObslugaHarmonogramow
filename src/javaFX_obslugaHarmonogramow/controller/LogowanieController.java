@@ -37,6 +37,8 @@ public class LogowanieController {
     @FXML
     private Pane fxPaneLog;
 
+    @FXML
+    private Label fxTxtLoginError;
 
     @FXML
     void onEnter(KeyEvent event) {
@@ -76,7 +78,10 @@ public class LogowanieController {
             }
             StageController sc = new StageController("menuGlowne", "Menu główne");
         } else {
-            System.out.println("Błędna para login/hasło");
+            fxTxtLoginError.setVisible(true);
+            SzkoleniaController alert = new SzkoleniaController();
+            alert.pokazAlert("ERROR","błędny login lub hasło, spróbuj jeszcze raz");
+            //System.out.println("Błędna para login/hasło");
         }
     }
 

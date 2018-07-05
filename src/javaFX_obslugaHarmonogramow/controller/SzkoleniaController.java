@@ -8,8 +8,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.event.Event;
 import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class SzkoleniaController {
 
@@ -65,10 +66,31 @@ public class SzkoleniaController {
     private TextField fxTxtAkronim;
 
     @FXML
+    private Label fxLabelDataOdError;
+
+    @FXML
+    private Label fxLabelDataDoError;
+
+    @FXML
     private ComboBox<String> fxComNazwaKursu;
 
     @FXML
     private ComboBox<String> fxComTypSzkolenia;
+
+    @FXML
+    void fxNazwaSzkolenieOnHiding(Event event) {
+        buttonSetDisable();
+    }
+
+    @FXML
+    void fxDatePicekerOnHidingDataDo(Event event) {
+        buttonSetDisable();
+    }
+
+    @FXML
+    void fxDatePicekerOnHidingDataOd(Event event) {
+        buttonSetDisable();
+    }
 
     @FXML
     private Button fxButSlownikSzkolen;
@@ -103,7 +125,7 @@ public class SzkoleniaController {
                 ps.setDate(2, java.sql.Date.valueOf(fxDatDataOd.getValue()));
                 ps.setDate(3, java.sql.Date.valueOf(fxDatDataDo.getValue()));
             } catch (NullPointerException nulle){
-                pokazAlert("ERROR", "Wypełnij wszytskie pola przed edycją szkolenia!");
+                pokazAlert("ERROR", "Wypełnij wszystkie pola przed edycją szkolenia!");
             }
             ps.setString(4, String.valueOf(fxComTypSzkolenia.getValue()).replace("Dzienne", "d").replace("Weekendowe", "w"));
             ps.setString(5, String.valueOf(fxComNazwaKursu.getValue()));
@@ -153,7 +175,10 @@ public class SzkoleniaController {
         }
         nazwa = FXCollections.observableArrayList(nazwaSzkolen);
         fxComNazwaKursu.getItems().addAll(nazwa);
+        buttonSetDisable();
     }
+
+
 
     private void populaTetableView() {
         ObservableList<Szkolenie> szkolenieView;
@@ -191,11 +216,54 @@ public class SzkoleniaController {
         fxTabviewSzkolenia.getItems().addAll(szkolenieView);
     }
 
-    private void pokazAlert(String tytul, String tekst) {
+    public void pokazAlert(String tytul, String tekst) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(tytul);
         alert.setContentText(tekst);
         alert.showAndWait();
+    }
+
+    private void buttonSetDisable() {
+        Connection con = connection.getCon();
+        if (fxDatDataOd.getValue() != null && fxDatDataDo.getValue() != null){
+            int kursLiczbaDni = 999999999;
+            long diff = DAYS.between(fxDatDataOd.getValue(),fxDatDataDo.getValue());
+            System.out.println(diff);
+            System.out.println(kursLiczbaDni);
+            try {
+                PreparedStatement ps = con.prepareStatement("SELECT ile_dni FROM fkedupl_pwngr.Kursy WHERE nazwa=?");
+                if (fxComNazwaKursu.getValue() != null){
+                    ps.setString(1, fxComNazwaKursu.getValue());
+                }else{
+                    ps.setString(1, "");
+                }
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    kursLiczbaDni = rs.getInt(1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            System.out.println(kursLiczbaDni);
+            if(fxDatDataOd.getValue().isBefore(fxDatDataDo.getValue()) && kursLiczbaDni<=diff){
+                fxButEdytujSzkolenie.setDisable(false);
+                fxButDodajSzkolenie.setDisable(false);
+                fxLabelDataOdError.setVisible(false);
+                fxLabelDataDoError.setVisible(false);
+            }
+            else {
+                fxButEdytujSzkolenie.setDisable(true);
+                fxButDodajSzkolenie.setDisable(true);
+                if(!fxDatDataOd.getValue().isBefore(fxDatDataDo.getValue())) {
+                    fxLabelDataOdError.setVisible(true);
+                }else{
+                    fxLabelDataDoError.setVisible(true);
+                }
+            }
+        }else{
+            fxButEdytujSzkolenie.setDisable(true);
+            fxButDodajSzkolenie.setDisable(true);
+        }
     }
 
 }

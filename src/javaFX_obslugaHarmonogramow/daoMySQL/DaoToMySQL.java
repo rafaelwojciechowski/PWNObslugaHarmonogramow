@@ -8,7 +8,7 @@ public class DaoToMySQL {
 //    Zakomentowany kod służy do obsługi drivera w wersji wcześniejszej niż 8.0
 //    final static String draiverMySQl = "com.mysql.jdbc.Driver";
 //    final static String url = "jdbc:mysql://fk.edu.pl/fkedupl_pwngr?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    final static String draiverMySQl = "com.mysql.cj.jdbc.Driver";
+    final static String draiverMySQl = "com.mysql.jdbc.Driver";
     final static String url = "jdbc:mysql://fk.edu.pl/fkedupl_pwngr?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     final static String uid = "fkedupl_pwn";
     final static String pwd = "pWn20180527";
