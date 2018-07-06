@@ -81,7 +81,7 @@ public class MenuGlowneController {
         widoczny = true;
     }
 
-    private void otworzNoweOkno(String fxmlNazwa, String tytul) {
+    public void otworzNoweOkno(String fxmlNazwa, String tytul) {
         StageController sc = new StageController(fxmlNazwa, tytul);
     }
 
