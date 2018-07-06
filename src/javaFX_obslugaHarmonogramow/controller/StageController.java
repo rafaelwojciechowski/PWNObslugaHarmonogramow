@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class StageController extends Parent {
         Stage stage = new Stage();
         listaStage.put(fxmlNazwa,stage);
         stage.setTitle(tytul);
+        stage.getIcons().add(new Image(StageController.class.getResourceAsStream( "../view/calendar_icon.png" )));
         stage.setScene(new Scene(root, 770, 550));
         stage.show();
     }

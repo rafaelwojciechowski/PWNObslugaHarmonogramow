@@ -228,8 +228,8 @@ public class SzkoleniaController {
         if (fxDatDataOd.getValue() != null && fxDatDataDo.getValue() != null){
             int kursLiczbaDni = 999999999;
             long diff = DAYS.between(fxDatDataOd.getValue(),fxDatDataDo.getValue());
-            System.out.println(diff);
-            System.out.println(kursLiczbaDni);
+//            System.out.println(diff);
+//            System.out.println(kursLiczbaDni);
             try {
                 PreparedStatement ps = con.prepareStatement("SELECT ile_dni FROM fkedupl_pwngr.Kursy WHERE nazwa=?");
                 if (fxComNazwaKursu.getValue() != null){
@@ -244,7 +244,7 @@ public class SzkoleniaController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            System.out.println(kursLiczbaDni);
+//            System.out.println(kursLiczbaDni);
             if(fxDatDataOd.getValue().isBefore(fxDatDataDo.getValue()) && kursLiczbaDni<=diff){
                 fxButEdytujSzkolenie.setDisable(false);
                 fxButDodajSzkolenie.setDisable(false);

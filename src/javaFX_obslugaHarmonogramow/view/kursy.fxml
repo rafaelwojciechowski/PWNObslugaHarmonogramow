@@ -56,6 +56,7 @@
                         <Button fx:id="fxButDodajKurs" mnemonicParsing="false" onMouseClicked="#onButDodajKurs" text="Dodaj kurs" />
                         <Button fx:id="fxButEdytujKurs" mnemonicParsing="false" onMouseClicked="#onButEdytujKurs" text="Edytuj kurs" />
                         <Button fx:id="fxButUsunKurs" mnemonicParsing="false" onMouseClicked="#onButUsunKurs" text="Usuń kurs" />
+                        <Button fx:id="fxButPrzypiszKategorie" mnemonicParsing="false" onMouseClicked="#onButPrzypiszKategorie" text="Przypisz kategorię" />
                      </children>
                   </HBox>
                </children>

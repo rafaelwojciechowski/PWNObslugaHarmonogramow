@@ -42,6 +42,9 @@ public class KursyController {
     private Button fxButUsunKurs;
 
     @FXML
+    private Button fxButPrzypiszKategorie;
+
+    @FXML
     private Label fxLiczbaDniEtykieta;
 
     @FXML
@@ -116,6 +119,17 @@ public class KursyController {
     }
 
     @FXML
+    void onButPrzypiszKategorie(MouseEvent event) {
+        Kurs kurs = fxTabviewKursy.getSelectionModel().getSelectedItem();
+        if (kurs == null) {
+            pokazAlert("Błąd", "Nie wybrano żadnego kursu. Wybierz kurs, przed przypisaniem kategorii");
+        } else {
+            PrzypiszKategorieController.setKurs(kurs);
+            StageController sc = new StageController("przypisz_kategorie", "Przypisz kategorię do kursu");
+        }
+    }
+
+    @FXML
     void initialize() {
 
         fxLiczbaDniSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -161,6 +175,11 @@ public class KursyController {
         return lista;
     }
 
-
+    private void pokazAlert(String tytul, String tekst) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(tytul);
+        alert.setContentText(tekst);
+        alert.showAndWait();
+    }
 
 }
