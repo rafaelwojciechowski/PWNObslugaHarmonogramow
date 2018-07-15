@@ -37,7 +37,7 @@
                     </rowConstraints>
                      <children>
                         <Label fx:id="fxNazwaEtykieta" text="Etykieta" />
-                        <TextField fx:id="fxTxtNazwa" editable="false" GridPane.columnIndex="1" />
+                        <TextField fx:id="fxTxtNazwa" editable="false" style="-fx-background-color: #FAFAFA; -fx-border-color: #DDDDDD;" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <HBox prefHeight="38.0" prefWidth="503.0" spacing="26.0">
