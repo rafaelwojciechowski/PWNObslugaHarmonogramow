@@ -5,6 +5,9 @@ public class KategoriaTematyczna {
     private int id;
     private String nazwa;
 
+    public KategoriaTematyczna() {
+    }
+
     public KategoriaTematyczna(int id, String nazwa) {
         this.id = id;
         this.nazwa = nazwa;
