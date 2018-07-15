@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javaFX_obslugaHarmonogramow.model.Szkolenie;
 import javafx.collections.FXCollections;
@@ -43,6 +44,9 @@ public class SzkoleniaController {
 
     @FXML
     private Button fxButUsunSzkolenie;
+
+    @FXML
+    private Button fxButDniSzkolenia;
 
     @FXML
     private TableColumn<Szkolenie, Date> fxColDataDo;
@@ -89,11 +93,11 @@ public class SzkoleniaController {
 
     @FXML
     void fxDatePicekerOnHidingDataOd(Event event) {
+        if (getKursLiczbaDni(0) != 0){
+            fxDatDataDo.setValue(fxDatDataOd.getValue().plusDays(getKursLiczbaDni(0)));
+        }
         buttonSetDisable();
     }
-
-    @FXML
-    private Button fxButSlownikSzkolen;
 
     @FXML
     void onButDodajSzkolenie(MouseEvent event) {
@@ -157,6 +161,12 @@ public class SzkoleniaController {
     }
 
     @FXML
+    void onDniSzkolen(ActionEvent event) {
+        MenuGlowneController menuGlowneController = new MenuGlowneController();
+        menuGlowneController.otworzNoweOkno("dniSzkolen", "Dni Szkoleń");
+    }
+
+    @FXML
     void initialize() {
         populaTetableView();
         fxComTypSzkolenia.getItems().addAll("Dzienne","Weekendowe");
@@ -177,8 +187,6 @@ public class SzkoleniaController {
         fxComNazwaKursu.getItems().addAll(nazwa);
         buttonSetDisable();
     }
-
-
 
     private void populaTetableView() {
         ObservableList<Szkolenie> szkolenieView;
@@ -224,28 +232,9 @@ public class SzkoleniaController {
     }
 
     private void buttonSetDisable() {
-        Connection con = connection.getCon();
         if (fxDatDataOd.getValue() != null && fxDatDataDo.getValue() != null){
-            int kursLiczbaDni = 999999999;
             long diff = DAYS.between(fxDatDataOd.getValue(),fxDatDataDo.getValue());
-//            System.out.println(diff);
-//            System.out.println(kursLiczbaDni);
-            try {
-                PreparedStatement ps = con.prepareStatement("SELECT ile_dni FROM fkedupl_pwngr.Kursy WHERE nazwa=?");
-                if (fxComNazwaKursu.getValue() != null){
-                    ps.setString(1, fxComNazwaKursu.getValue());
-                }else{
-                    ps.setString(1, "");
-                }
-                ResultSet rs = ps.executeQuery();
-                while(rs.next()){
-                    kursLiczbaDni = rs.getInt(1);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-//            System.out.println(kursLiczbaDni);
-            if(fxDatDataOd.getValue().isBefore(fxDatDataDo.getValue()) && kursLiczbaDni<=diff){
+            if(fxDatDataOd.getValue().isBefore(fxDatDataDo.getValue()) && getKursLiczbaDni(999999999)<=diff){
                 fxButEdytujSzkolenie.setDisable(false);
                 fxButDodajSzkolenie.setDisable(false);
                 fxLabelDataOdError.setVisible(false);
@@ -266,6 +255,23 @@ public class SzkoleniaController {
         }
     }
 
+    private int getKursLiczbaDni(int kursLiczbaDni) {
+        Connection con = connection.getCon();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT ile_dni FROM fkedupl_pwngr.Kursy WHERE nazwa=?");
+            if (fxComNazwaKursu.getValue() != null){
+                ps.setString(1, fxComNazwaKursu.getValue());
+            }else{
+                ps.setString(1, "");
+            }
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                kursLiczbaDni = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return kursLiczbaDni;
+    }
+
 }
-
-

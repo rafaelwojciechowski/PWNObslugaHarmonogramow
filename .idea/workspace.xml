@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67a7105c-b7d8-483d-b59e-70b6f42d4a4b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_43_bin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/notebook-428293_1920.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/LogowanieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/LogowanieController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/dniSzkolen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/MenuGlowneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/MenuGlowneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/daoMySQL/DaoToMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/daoMySQL/DaoToMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/logowanie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/logowanie.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/menuGlowne.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/menuGlowne.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/szkolenia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/szkolenia.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,19 +17,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SzkoleniaController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SzkoleniaController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="225" column="37" lean-forward="true" selection-start-line="225" selection-start-column="37" selection-end-line="225" selection-end-column="37" />
+            <state relative-caret-position="2465">
+              <caret line="159" column="28" lean-forward="true" selection-start-line="159" selection-start-column="28" selection-end-line="159" selection-end-column="28" />
               <folding>
-                <element signature="e#1746#1747#0" expanded="true" />
-                <element signature="e#1780#1781#0" expanded="true" />
-                <element signature="e#1843#1844#0" expanded="true" />
-                <element signature="e#1877#1878#0" expanded="true" />
-                <element signature="e#1940#1941#0" expanded="true" />
-                <element signature="e#1974#1975#0" expanded="true" />
+                <element signature="e#1828#1829#0" expanded="true" />
+                <element signature="e#1862#1863#0" expanded="true" />
+                <element signature="e#1925#1926#0" expanded="true" />
+                <element signature="e#1959#1960#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dniSzkolen.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/dniSzkolen.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="MenuGlowneController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/MenuGlowneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -41,7 +54,7 @@
       <file leaf-file-name="szkolenia.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/szkolenia.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="918">
               <caret line="54" column="71" selection-start-line="54" selection-start-column="71" selection-end-line="54" selection-end-column="71" />
             </state>
           </provider>
@@ -49,6 +62,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -63,6 +83,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/daoMySQL/DaoToMySQL.java" />
         <option value="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/LogowanieController.java" />
+        <option value="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/MenuGlowneController.java" />
+        <option value="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/dniSzkolen.fxml" />
         <option value="$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java" />
       </list>
     </option>
@@ -78,6 +100,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,19 +147,12 @@
               <item name="javaFX_obslugaHarmonogramow" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PWNObslugaHarmonogramow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PWNObslugaHarmonogramow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="mysql-connector-java-5.1.43-bin.jar" type="ab9368bb:PsiFileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,18 +269,18 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32909605" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32768363" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32909605" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32909605" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -279,15 +295,34 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3825">
+          <caret line="225" column="37" lean-forward="true" selection-start-line="225" selection-start-column="37" selection-end-line="225" selection-end-column="37" />
+          <folding>
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/szkolenia.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="71" selection-start-line="54" selection-start-column="71" selection-end-line="54" selection-end-column="71" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3774">
           <caret line="222" column="32" lean-forward="true" selection-start-line="222" selection-start-column="32" selection-end-line="222" selection-end-column="32" />
           <folding>
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#1780#1781#0" expanded="true" />
-            <element signature="e#1843#1844#0" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1940#1941#0" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -351,32 +386,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="492">
           <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/szkolenia.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="918">
           <caret line="54" column="71" selection-start-line="54" selection-start-column="71" selection-end-line="54" selection-end-column="71" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/view/dniSzkolen.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/SzkoleniaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="225" column="37" lean-forward="true" selection-start-line="225" selection-start-column="37" selection-end-line="225" selection-end-column="37" />
+        <state relative-caret-position="2465">
+          <caret line="159" column="28" lean-forward="true" selection-start-line="159" selection-start-column="28" selection-end-line="159" selection-end-column="28" />
           <folding>
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#1780#1781#0" expanded="true" />
-            <element signature="e#1843#1844#0" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1940#1941#0" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javaFX_obslugaHarmonogramow/controller/MenuGlowneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>
