@@ -62,12 +62,12 @@
                         <Button fx:id="fxButDodajSzkolenie" mnemonicParsing="false" onMouseClicked="#onButDodajSzkolenie" text="Dodaj szkolenie" />
                         <Button fx:id="fxButEdytujSzkolenie" mnemonicParsing="false" onMouseClicked="#onButEdytujSzkolenie" text="Edytuj szkolenie" />
                         <Button fx:id="fxButUsunSzkolenie" mnemonicParsing="false" onMouseClicked="#onButUsunSzkolenie" text="Usuń szkolenie" />
-                        <Button fx:id="fxButDniSzkolenia" mnemonicParsing="false" onAction="#onDniSzkolen" text="Dni szkolenia" />
+                        <Button fx:id="fxButDniSzkolenia" disable="true" mnemonicParsing="false" onAction="#onDniSzkolen" text="Dni szkolenia" />
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <TableView fx:id="fxTabviewSzkolenia" layoutX="56.0" layoutY="227.0" prefHeight="200.0" prefWidth="502.0">
+            <TableView fx:id="fxTabviewSzkolenia" layoutX="56.0" layoutY="227.0" onMouseClicked="#fxTableViewOnClicked" prefHeight="200.0" prefWidth="502.0">
               <columns>
                 <TableColumn fx:id="fxColAkronim" minWidth="50.0" prefWidth="100.0" text="Akronim" />
                 <TableColumn fx:id="fxColDataOd" minWidth="50.0" prefWidth="100.0" text="Data od" />

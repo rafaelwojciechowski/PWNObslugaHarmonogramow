@@ -1,11 +1,15 @@
 package javaFX_obslugaHarmonogramow.controller;
 
+
 import java.net.URL;
 
+
 import java.sql.*;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+
 
 import javaFX_obslugaHarmonogramow.daoMySQL.DaoToMySQL;
 import javafx.event.ActionEvent;
@@ -100,6 +104,15 @@ public class SzkoleniaController {
     }
 
     @FXML
+    void fxTableViewOnClicked(MouseEvent event) {
+        if(fxTabviewSzkolenia.getSelectionModel().getSelectedItem() != null){
+            fxButDniSzkolenia.setDisable(false);
+        }else{
+            fxButDniSzkolenia.setDisable(true);
+        }
+    }
+
+    @FXML
     void onButDodajSzkolenie(MouseEvent event) {
         Connection con = connection.getCon();
         try {
@@ -163,6 +176,9 @@ public class SzkoleniaController {
     @FXML
     void onDniSzkolen(ActionEvent event) {
         MenuGlowneController menuGlowneController = new MenuGlowneController();
+        DniSzkolController.nazwaSzkolenia = fxTabviewSzkolenia.getSelectionModel().getSelectedItem().getAkronim();
+        Date pierwszyDzienSzkolenia = new Date(fxTabviewSzkolenia.getSelectionModel().getSelectedItem().getData_od().getTime());
+        DniSzkolController.pierwszyDzienSzkolenia = pierwszyDzienSzkolenia.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         menuGlowneController.otworzNoweOkno("dniSzkolen", "Dni Szkoleń");
     }
 
@@ -170,7 +186,6 @@ public class SzkoleniaController {
     void initialize() {
         populaTetableView();
         fxComTypSzkolenia.getItems().addAll("Dzienne","Weekendowe");
-
         ObservableList<String> nazwa;
         ArrayList<String> nazwaSzkolen = new ArrayList<>();
         Connection con = connection.getCon();
