@@ -47,6 +47,9 @@ public class TrenerController {
     private Button fxButtonUsun;
 
     @FXML
+    private Button fxButPrzypiszKategorie;
+
+    @FXML
     private TableView<Trener> fxTabviewTrener;
 
     @FXML
@@ -146,6 +149,17 @@ public class TrenerController {
             e.printStackTrace();
         }
         pokazListe();
+    }
+
+    @FXML
+    void onButPrzypiszKategorie(MouseEvent event) {
+        Trener trener = fxTabviewTrener.getSelectionModel().getSelectedItem();
+        if (trener == null) {
+            new Komunikat("Błąd", "Nie wybrano żadnego kursu. Wybierz kurs, przed przypisaniem kategorii");
+        } else {
+            PrzypiszKategorieController.setTrener(trener);
+            StageController sc = new StageController("przypisz_kategorie", "Przypisz kategorię do trenera");
+        }
     }
 
     @FXML

@@ -74,9 +74,10 @@
                   </GridPane>
                   <HBox prefHeight="38.0" prefWidth="503.0" spacing="26.0">
                      <children>
-                        <Button fx:id="fxButtonDodaj" mnemonicParsing="false" onAction="#onActionDodaj" onMouseClicked="#onButDodajTrenera" prefWidth="100.0" text="Dodaj" />
-                        <Button fx:id="fxButtonEdytuj" mnemonicParsing="false" onAction="#onActionEdytuj" onMouseClicked="#onButEdytujTrenera" prefWidth="100.0" text="Edytuj" />
-                        <Button fx:id="fxButtonUsun" mnemonicParsing="false" onAction="#onActionUsun" onMouseClicked="#onButUsunTrenera" prefWidth="100.0" text="Usuń" />
+                         <Button fx:id="fxButtonDodaj" mnemonicParsing="false" onAction="#onActionDodaj" onMouseClicked="#onButDodajTrenera" prefWidth="100.0" text="Dodaj" />
+                         <Button fx:id="fxButtonEdytuj" mnemonicParsing="false" onAction="#onActionEdytuj" onMouseClicked="#onButEdytujTrenera" prefWidth="100.0" text="Edytuj" />
+                         <Button fx:id="fxButtonUsun" mnemonicParsing="false" onAction="#onActionUsun" onMouseClicked="#onButUsunTrenera" prefWidth="100.0" text="Usuń" />
+                         <Button fx:id="fxButPrzypiszKategorie" mnemonicParsing="false" onMouseClicked="#onButPrzypiszKategorie" text="Przypisz kategorię" />
                      </children>
                   </HBox>
                </children>
